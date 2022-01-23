@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>421</width>
+    <height>316</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>421</width>
+    <height>316</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>421</width>
+    <height>316</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>MS Shell Dlg 2</family>
+    <pointsize>9</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Универсальный программатор UProg 1.0</string>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QTabWidget::pane {
+    background: rgba(200,200,200,100);
+	border:2;
+	border-style:dashed;
+}
+
+QTabBar::tab {
+	    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 gold, stop: 0.4 white,
+                                stop: 0.5 gold, stop: 1.0 gold);
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #f4f4f4,
+                                stop: 0.5 #e7e7e7, stop: 1.0 #fafafa);
+}
+
+QFrame#frame{
+	color:white;
+	background-color:green;
+	border-radius: 5px;
+	border-style: solid;
+	border-width:2px;
+	border-color:gray;
+}
+
+QFrame#frame_2{
+	color:white;
+	background-color:green;
+	border-radius: 5px;
+	border-style: solid;
+	border-width:2px;
+	border-color:gray;
+}
+
+QFrame#frame_3{
+	background: rgba(169,169,169,150);
+	border-radius: 5px;
+}
+
+QFrame#frame_4{
+	background: rgba(169,169,169,150);
+	border-radius: 5px;
+}
+
+QGroupBox {
+    background-color: blue;
+    border: 2px solid white;
+    border-radius: 0px;
+    margin-top: 2ex;
+}
+
+QGroupBox::title {
+	font: bold &quot;Times New Roman&quot;;
+    subcontrol-origin: margin;
+    subcontrol-position: top center; 
+    padding: 0 3px;
+    background-color: blue;
+	color:yellow;
+	border: 2px solid white;
+	margin-top: 1ex;
+}
+
+QMainWindow{
+	background-image: url(&quot;../images/background.jpg&quot;);
+	background-position:center;
+}
+
+QProgressBar{
+	font-family:&quot;Terminal&quot;;
+	border: 2px solid grey;
+	border-radius: 2px;
+}
+
+QProgressBar::chunk{
+	background-color: gold;
+	width: 10px;
+	margin: 0.5px;
+}
+
+QTableView{
+	selection-background-color: rgb(255,137,39);
+	gridline-color:rgb(255,137,39);
+}
+
+::section{
+	background-color:rgb(255,137,39);
+}
+
+QStatusBar{
+   background-color:rgba(255,255,255,200);
+}
+
+QScrollBar{
+		background-color:rgb(255,137,39);
+}</string>
+  </property>
+  <property name="animated">
+   <bool>true</bool>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
+  <property name="tabShape">
+   <enum>QTabWidget::Triangular</enum>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
+   </property>
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>403</width>
+      <height>281</height>
+     </rect>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>408</width>
+      <height>16777215</height>
+     </size>
+    </property>
+    <property name="acceptDrops">
+     <bool>false</bool>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true"/>
+    </property>
+    <property name="tabPosition">
+     <enum>QTabWidget::South</enum>
+    </property>
+    <property name="tabShape">
+     <enum>QTabWidget::Triangular</enum>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="usesScrollButtons">
+     <bool>false</bool>
+    </property>
+    <widget class="QWidget" name="tab">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+     <attribute name="title">
+      <string>Программатор</string>
+     </attribute>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>7</x>
+        <y>10</y>
+        <width>391</width>
+        <height>241</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
+       <property name="spacing">
+        <number>5</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
+       <item>
+        <widget class="QFrame" name="frame_3">
+         <property name="minimumSize">
+          <size>
+           <width>190</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>180</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+	font: &quot;Times New Roman&quot;;
+	color:black;
+}
+
+QWidget#widgetEdit{
+	background: rgba(118,220,200,100);
+	background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #dcdcdc,
+                                stop: 0.5 #dcdcdc, stop: 1.0 #fafafa);
+	border-radius: 5px;
+	border-style: solid;
+	border-width:2px;
+}
+
+</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QFrame" name="frame">
+          <property name="geometry">
+           <rect>
+            <x>5</x>
+            <y>10</y>
+            <width>180</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:white;
+	font: bold italic large &quot;Courier New&quot;;
+	font-size:19px;
+}
+
+QComboBox{
+	border-style: dashed;
+	border-color: white;
+	background-color:black;
+	color:white;
+	border-width:2px;
+	border-color:beige;
+	border-radius:4px;
+	padding-left: 5px;
+}
+
+QComboBox:hover{
+	border-style: dashed;
+	border-color: white;
+	color:white;
+	background-color: grey;
+	border-width:2px;
+	border-radius:4px;
+}
+
+QComboBox::down-arrow{
+
+}
+
+QComboBox::drop-down{
+	border-style:none;
+	width:20px;
+	image:url(&quot;images/dropdown.png&quot;);
+}
+
+QComboBox::drop-down:hover{
+}
+
+QComboBox:disabled{
+	border-style: dashed;
+	border-color: white;
+	background-color:green;
+	color:gray;
+	border-width:2px;
+	border-color:beige;
+	border-radius:4px;
+	padding-left: 5px;
+}
+
+QPushButton{
+	background-color: rgb(118,200,50);
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+}
+
+QPushButton:hover{
+	background-color: rgb(118,250,50);
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+}
+
+QPushButton:pressed{
+	background-color: rgb(118,200,50);
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+}
+
+QPushButton:disabled{
+    background-color:green;
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+}
+
+QPushButton#pushButton_2{
+	background-color: rgb(200,0,0);
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+	color:white;
+}
+
+QPushButton#pushButton_2:hover{
+	background-color: rgb(250,0,0);
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+}
+
+QPushButton#pushButton_2:pressed{
+	background-color: rgb(200,0,0);
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+}
+
+QPushButton#pushButton_2:disabled{
+	background-color: green;
+	border-style: outset;
+	border-width:2px;
+	border-color:beige;
+	border-radius:8px;
+	color:gray;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QWidget" name="layoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>1</y>
+             <width>161</width>
+             <height>93</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_4" stretch="1,1,1">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>150</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Courier New</family>
+                <pointsize>-1</pointsize>
+                <weight>75</weight>
+                <italic>true</italic>
+                <bold>true</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Прошивка</string>
+              </property>
+              <property name="textFormat">
+               <enum>Qt::AutoText</enum>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,1">
+              <property name="spacing">
+               <number>6</number>
+              </property>
+              <item>
+               <widget class="QPushButton" name="pushButton">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Запись</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QPushButton" name="pushButton_2">
+                <property name="minimumSize">
+                 <size>
+                  <width>70</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true"/>
+                </property>
+                <property name="text">
+                 <string>Чтение</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_5"/>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QGroupBox" name="groupBox_2">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>120</y>
+            <width>171</width>
+            <height>111</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLineEdit{
+	border-radius: 0px;
+	border-style: none;
+	border-width:0px;	
+	border-color:white;
+	background-color:blue;
+	color:white;
+    font-family: &quot;Terminal&quot;;
+}
+
+QLabel{
+	color:white;
+    font-family: &quot;Terminal&quot;;
+}
+
+QRadioButton{
+	color:white;
+	border-style: none;
+    font-family: &quot;Terminal&quot;;
+	color:white;
+}
+
+QRadioButton::indicator:uncheked{
+		image: url(&quot;images/radiooff.png&quot;);
+}
+
+QRadioButton::indicator:cheked{
+		image: url(&quot;images/radioon.png&quot;);
+}</string>
+          </property>
+          <property name="title">
+           <string>Настройка программатора</string>
+          </property>
+          <property name="flat">
+           <bool>false</bool>
+          </property>
+          <property name="checkable">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QFrame" name="frame_4">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>190</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QLabel{
+	font: &quot;Times New Roman&quot;;
+	color:black;
+}
+
+QWidget#widgetEdit{
+	background: rgba(118,220,200,100);
+	background-color:qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                stop: 0 #fafafa, stop: 0.4 #dcdcdc,
+                                stop: 0.5 #dcdcdc, stop: 1.0 #fafafa);
+	border-radius: 5px;
+	border-style: solid;
+	border-width:2px;
+}
+</string>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Raised</enum>
+         </property>
+         <widget class="QFrame" name="frame_2">
+          <property name="geometry">
+           <rect>
+            <x>5</x>
+            <y>10</y>
+            <width>180</width>
+            <height>101</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+	color:white;
+	font: bold italic large &quot;Courier New&quot;;
+	font-size:19px;
+}
+
+QComboBox{
+	border-style: dashed;
+	border-color: white;
+	background-color:black;
+	color:white;
+	border-width:2px;
+	border-color:beige;
+	border-radius:4px;
+	padding-left: 5px;
+}
+
+QComboBox:hover{
+	border-style: dashed;
+	border-color: white;
+	color:white;
+	background-color: grey;
+	border-width:2px;
+	border-radius:4px;
+}
+
+QComboBox::down-arrow{
+
+}
+
+QComboBox::drop-down{
+	border-style:none;
+	width:20px;
+	image:url(&quot;images/dropdown.png&quot;);
+}
+
+QComboBox::drop-down:hover{
+}
+
+QComboBox:disabled{
+	border-style: dashed;
+	border-color: white;
+	background-color:green;
+	color:gray;
+	border-width:2px;
+	border-color:beige;
+	border-radius:4px;
+	padding-left: 5px;
+}</string>
+          </property>
+          <property name="frameShape">
+           <enum>QFrame::StyledPanel</enum>
+          </property>
+          <property name="frameShadow">
+           <enum>QFrame::Raised</enum>
+          </property>
+          <widget class="QWidget" name="verticalLayoutWidget_4">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>0</y>
+             <width>161</width>
+             <height>91</height>
+            </rect>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_6">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+           </layout>
+          </widget>
+         </widget>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>120</y>
+            <width>171</width>
+            <height>111</height>
+           </rect>
+          </property>
+          <property name="font">
+           <font>
+            <family>MS Shell Dlg 2</family>
+            <weight>50</weight>
+            <italic>false</italic>
+            <bold>false</bold>
+           </font>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QRadioButton{
+	color:white;
+	border-style: none;
+    font-family: &quot;Terminal&quot;;
+	color:white;
+}
+
+QLabel{
+	color:white;
+    font-family: &quot;Terminal&quot;;
+}</string>
+          </property>
+          <property name="title">
+           <string>Настройка микросхемы</string>
+          </property>
+         </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Карта памяти</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>-1</x>
+        <y>0</y>
+        <width>401</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
+       </property>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_3">
+     <attribute name="title">
+      <string>Схема принципиальная</string>
+     </attribute>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>401</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+   <widget class="QProgressBar" name="progressBar">
+    <property name="geometry">
+     <rect>
+      <x>343</x>
+      <y>276</y>
+      <width>69</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="value">
+     <number>0</number>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="textVisible">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="textDirection">
+     <enum>QProgressBar::TopToBottom</enum>
+    </property>
+    <property name="format">
+     <string>%p%</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionFdgd">
+   <property name="text">
+    <string>fdgd</string>
+   </property>
+  </action>
+  <action name="actionOPen">
+   <property name="text">
+    <string>Open</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="text">
+    <string>Открыть</string>
+   </property>
+  </action>
+  <action name="actionClose">
+   <property name="text">
+    <string>Закрыть</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Выход</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

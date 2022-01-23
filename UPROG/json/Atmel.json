@@ -1,0 +1,65 @@
+{
+	"Atmel":{
+		"https://www.microchip.com/":"ManInfo",
+		"AT17LV(C)65":{
+			"RESET":"RadioButton",
+			"https://pdf4.datasheet.su/173347.pdf":"DataSheet",
+			"LPT_I2C":{
+				"Адрес LPT порта:|0378":"LineEdit",
+				"":"Schematic"
+			}
+		},
+		"AT17LV(C)128":{
+			"RESET":"RadioButton",
+			"https://pdf4.datasheet.su/173347.pdf":"DataSheet",
+			"LPT_I2C":{
+				"Адрес LPT порта:|0378":"LineEdit",	
+				"":"Schematic"	
+			}
+		},
+		"AT17LV(C)256":{
+			"RESET":"RadioButton",
+			"https://pdf4.datasheet.su/173347.pdf":"DataSheet",
+			"LPT_I2C":{
+				"Адрес LPT порта:|0378":"LineEdit",	
+				"":"Schematic"	
+			}
+		},
+		"AT17LV(C)512":{
+			"RESET":"RadioButton",
+			"DCLK":"RadioButton",
+			"https://pdf4.datasheet.su/173347.pdf":"DataSheet",
+			"LPT_I2C":{
+				"Адрес LPT порта:|0378":"LineEdit",	
+				"":"Schematic"	
+			}
+		},
+		"AT17LV(C)010":{
+			"RESET":"RadioButton",
+			"DCLK":"RadioButton",
+			"https://pdf4.datasheet.su/173347.pdf":"DataSheet",
+			"LPT_I2C":{
+				"Адрес LPT порта:|0378":"LineEdit",	
+				"../schematics/Atmel/AT17LV010.png":"Schematic"	
+			}
+		},
+		"AT17LV(C)002":{
+			"RESET":"RadioButton",
+			"DCLK":"RadioButton",
+			"https://pdf4.datasheet.su/173347.pdf":"DataSheet",
+			"LPT_I2C":{
+				"Адрес LPT порта:|0378":"LineEdit",	
+				"../schematics/Atmel/AT17LV002.png":"Schematic"	
+			}
+		},
+		"AT17LV(C)040":{
+			"RESET":"RadioButton",
+			"DCLK":"RadioButton",
+			"https://pdf4.datasheet.su/173347.pdf":"DataSheet",
+			"LPT_I2C":{
+				"Адрес LPT порта:|0378":"LineEdit",	
+				"":"Schematic"				
+			}
+		}
+	}
+}
