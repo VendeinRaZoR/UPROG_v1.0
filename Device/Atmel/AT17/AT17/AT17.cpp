@@ -1,3 +1,10 @@
+/*##########################################################*/
+/*######################====AT17====########################*/
+/*##########################################################*/
+/*Description:
+    AT17 Device integral circuit programming class that reimplements
+    methods of UProgBase programmer's class
+*/
 #include "AT17.h"
 #include <stdarg.h>
 #include <stdio.h>

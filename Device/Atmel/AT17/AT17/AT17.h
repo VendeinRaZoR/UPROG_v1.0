@@ -1,3 +1,10 @@
+/*##########################################################*/
+/*######################====AT17====########################*/
+/*##########################################################*/
+/*Description:
+    AT17 Device integral circuit programming class that reimplements
+    methods of UProgBase programmer's class
+*/
 #ifndef AT17_H
 #define AT17_H
 

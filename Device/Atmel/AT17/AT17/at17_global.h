@@ -1,3 +1,9 @@
+/*#################################################################*/
+/*######################====AT17_GLOBAL====########################*/
+/*#################################################################*/
+/*Description:
+    AT17_GLOBAL contains QT defines for creating external DLL library
+*/
 #ifndef AT17_GLOBAL_H
 #define AT17_GLOBAL_H
 
