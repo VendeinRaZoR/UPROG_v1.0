@@ -1,0 +1,7 @@
+Run ./UPROG.sh script with SUDO to execute !!!
+Because LPT will not work without SUDO
+
+WARNING !!!
+
+To run UPROG add path to temp folder with libraries into the end of file /etc/lib.so.conf
+Or try to use LD_LIBRARY_PATH to temp folder
