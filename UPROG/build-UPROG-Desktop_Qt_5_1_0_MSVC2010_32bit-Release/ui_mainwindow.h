@@ -60,7 +60,8 @@ public:
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
     QWidget *tab_3;
-    QLabel *label_2;
+    QWidget *verticalLayoutWidget_2;
+    QVBoxLayout *verticalLayout_2;
     QProgressBar *progressBar;
     QStatusBar *statusBar;
 
@@ -582,10 +583,15 @@ public:
         tabWidget->addTab(tab_2, QString());
         tab_3 = new QWidget();
         tab_3->setObjectName(QStringLiteral("tab_3"));
-        label_2 = new QLabel(tab_3);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(0, 0, 401, 261));
-        label_2->setAlignment(Qt::AlignCenter);
+        verticalLayoutWidget_2 = new QWidget(tab_3);
+        verticalLayoutWidget_2->setObjectName(QStringLiteral("verticalLayoutWidget_2"));
+        verticalLayoutWidget_2->setGeometry(QRect(-1, -1, 401, 271));
+        verticalLayout_2 = new QVBoxLayout(verticalLayoutWidget_2);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setSizeConstraint(QLayout::SetDefaultConstraint);
+        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         tabWidget->addTab(tab_3, QString());
         progressBar = new QProgressBar(centralWidget);
         progressBar->setObjectName(QStringLiteral("progressBar"));
@@ -624,7 +630,6 @@ public:
         groupBox->setTitle(QApplication::translate("MainWindow", "\320\235\320\260\321\201\321\202\321\200\320\276\320\271\320\272\320\260 \320\274\320\270\320\272\321\200\320\276\321\201\321\205\320\265\320\274\321\213", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab), QApplication::translate("MainWindow", "\320\237\321\200\320\276\320\263\321\200\320\260\320\274\320\274\320\260\321\202\320\276\321\200", 0));
         tabWidget->setTabText(tabWidget->indexOf(tab_2), QApplication::translate("MainWindow", "\320\232\320\260\321\200\321\202\320\260 \320\277\320\260\320\274\321\217\321\202\320\270", 0));
-        label_2->setText(QString());
         tabWidget->setTabText(tabWidget->indexOf(tab_3), QApplication::translate("MainWindow", "\320\241\321\205\320\265\320\274\320\260 \320\277\321\200\320\270\320\275\321\206\320\270\320\277\320\270\320\260\320\273\321\214\320\275\320\260\321\217", 0));
         progressBar->setFormat(QApplication::translate("MainWindow", "%p%", 0));
     } // retranslateUi

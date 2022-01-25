@@ -21,6 +21,7 @@ UPROG Universal Programmer's Main Window class
 #include "MenuBuilder.h"
 #include "../../UCommon.h"
 #include "submenu/HFComboBox.h"
+#include "submenu/HFLabel.h"
 #include "filedialog/FileFilterProxyModel.h"
 #include "fwtable/FWTableModel.h"
 #include "fwtable/FWItemDelegate.h"
@@ -71,6 +72,7 @@ private:
     HFComboBox *m_pHFComboBox_2;
     QLabel *m_pIntfLabel;
     HFComboBox *m_pHFComboBox_3;
+    HFLabel *m_pHFLabel;
 private:
     QFileDialog m_openFileDialog;
     QFileDialog m_saveFileDialog;
@@ -120,6 +122,7 @@ public slots:
     void getDataSheet();//Get DataSheet (with path in JSON file) for current device from WebSite or from local storage
     void getManufactureInfo();//Get Manufacture info (with path in JSON file) for current divices from WebSize or from local storage
     void getSchematics();//Open tab with schematics image
+    void getSchematicsPixmap();//Open schematics pixmap in system's picture viewer
     void keyPressEvent(QKeyEvent *vk);//Ctrl Key Press Event first & second times
     void keyReleaseEvent(QKeyEvent *vk);//Key Release Event (Reserved)
     void mouseReleaseEvent(QMouseEvent *vm);//Event when mouse button is already released

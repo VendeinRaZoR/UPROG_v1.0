@@ -29,14 +29,21 @@ class FWItemDelegate : public QStyledItemDelegate
     int m_nItemFrom2;
     int m_nItemTo2;
     bool m_bColorImage2;
+    QColor m_itemColor3;
+    QImage m_itemImage3;
+    int m_nItemFrom3;
+    int m_nItemTo3;
+    bool m_bColorImage3;
 public:
     FWItemDelegate(QWidget* pParentWidget = 0); //Initialize empty item background color & image
     virtual ~FWItemDelegate(); //cleanup
     void paint(QPainter *painter, const QStyleOptionViewItem &option, const QModelIndex &index) const; //Paint event of each item (word of firmware) in a HEX table
     void setItemColor1(int nItemFrom,int nItemTo,QColor &itemColor); //Set background color of loaded word in HEX table
     void setItemColor2(int nItemFrom,int nItemTo,QColor &itemColor); //Set background color of loading word in HEX table
+    void setItemColor3(int nItemFrom,int nItemTo,QColor &itemColor); //Set background color of remain words in HEX table
     void setItemImage1(int nItemFrom,int nItemTo,QImage &itemImage); //Set background image of loaded word in HEX table
     void setItemImage2(int nItemFrom,int nItemTo,QImage &itemImage); //Set background image of loading word in HEX table
+    void setItemImage3(int nItemFrom,int nItemTo,QImage &itemImage); //Set background image of remain words in HEX table
 };
 
 #endif // FWITEMDELEGATE_H

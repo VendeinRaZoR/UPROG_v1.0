@@ -13,7 +13,7 @@
 
 using namespace boost::python; //using Boost::Python namespace
 //Template realization of convertion QList to python's list type
-template <> PyObject *TypeIntoPython<QList<unsigned long>>::convert(QList<unsigned long> qList)
+template <> PyObject *TypeIntoPython< QList<unsigned long> >::convert(QList<unsigned long> qList)
 {
     PyObject* pPyList = PyList_New(NULL);
     for(int i=0;i<qList.length();i++)
@@ -21,7 +21,7 @@ template <> PyObject *TypeIntoPython<QList<unsigned long>>::convert(QList<unsign
     return pPyList;
 }
 //Template realization of convertion QVector to python's list type
-template <> PyObject *TypeIntoPython<QVector<unsigned long>>::convert(QVector<unsigned long> qVector)
+template <> PyObject *TypeIntoPython< QVector<unsigned long> >::convert(QVector<unsigned long> qVector)
 {
     PyObject* pPyVector = PyList_New(NULL);
     for(int i=0;i<qVector.size();i++)
@@ -39,7 +39,7 @@ template <> PyObject *TypeIntoPython<QString>::convert(QString qStr)
     return pPyUString;
 }
 //Template realization of convertion python's list to QList type
-template <> QList<unsigned long> TypeFromPython<QList<unsigned long>>::convert(PyObject *pPyObject)
+template <> QList<unsigned long> TypeFromPython< QList<unsigned long> >::convert(PyObject *pPyObject)
 {
     QList<unsigned long>data;
     if (PyList_Check(pPyObject))
@@ -57,7 +57,7 @@ template <> QList<unsigned long> TypeFromPython<QList<unsigned long>>::convert(P
     return data;
 }
 //Template realization of convertion python's list to QVector type
-template <> QVector<unsigned long> TypeFromPython<QVector<unsigned long>>::convert(PyObject *pPyObject)
+template <> QVector<unsigned long> TypeFromPython< QVector<unsigned long> >::convert(PyObject *pPyObject)
 {
     QVector<unsigned long>data;
     if (PyList_Check(pPyObject))
@@ -83,9 +83,9 @@ QPython::QPython()
     exec(PYTHON_STDOUT_CATCHER,m_mainNamespace,m_mainNamespace);//Run console output stream catcher script
     exec(PYTHON_SET_PATH,m_mainNamespace,m_mainNamespace);//Run python script that sets python modules directory
     m_pPyCatcher = PyObject_GetAttrString(m_mainModule.ptr(),"catchOutErr"); //Get string variable assigned to python's stdout
-    to_python_converter<QList<unsigned long>,TypeIntoPython<QList<unsigned long>>>();//Register convertions
-    to_python_converter<QVector<unsigned long>,TypeIntoPython<QVector<unsigned long>>>();//
-    to_python_converter<QString,TypeIntoPython<QString>>();//
+    to_python_converter<QList<unsigned long>,TypeIntoPython<QList<unsigned long> > >();//Register convertions
+    to_python_converter<QVector<unsigned long>,TypeIntoPython<QVector<unsigned long> > >();//
+    to_python_converter<QString,TypeIntoPython<QString> >();//
     qDebug() << "Python was Initialized...\n";//Proper Initialization Python indicator
 }
 //reserved

@@ -4,7 +4,7 @@
 /*Description:
 HFComboBox is reimplemented QComboBox standard element with additional
 feature such as submenu means another action instead popup window
-if user's mouse presses on ComboBox element
+if user's mouse presses on ComboBox element (HREF imitation)
 */
 #ifndef HFCOMBOBOX_H
 #define HFCOMBOBOX_H

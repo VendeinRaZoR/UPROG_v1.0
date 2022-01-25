@@ -29,7 +29,8 @@ SOURCES += main.cpp\
     fwtable/FWTableModel.cpp \
     fwtable/FWItemDelegate.cpp \
     submenu/HFComboBox.cpp \
-    MainApplication.cpp
+    MainApplication.cpp \
+    submenu/HFLabel.cpp
 
 HEADERS  += mainwindow.h \
     QPython2.h \
@@ -45,7 +46,8 @@ HEADERS  += mainwindow.h \
     ../../UProgBase.h \
     ../../UControlBase.h \
     ../../UCommon.h \
-    MainApplication.h
+    MainApplication.h \
+    submenu/HFLabel.h
 
 FORMS    += mainwindow.ui
 

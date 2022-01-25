@@ -118,8 +118,12 @@ MainWindow::MainWindow(QPython *pPythonInterpreter,QVector<QJsonObject> *pJsonOb
     ui->frame_4->setPalette(QPalette(QBrush(),QBrush(),QBrush(),
                                  QBrush(),QBrush(),QBrush(),
                                  QBrush(),QBrush(),QBrush(Qt::Dense7Pattern)));//
+    m_pHFLabel = new HFLabel();
+    //ui->scrollArea->addScrollBarWidget(m_pHFLabel,Qt::AlignCenter);
+    ui->verticalLayout_2->addWidget(m_pHFLabel);
     //ui->frame_3->setCursor(QCursor());
     //ui->frame_4->setCursor(QCursor());
+
 }
 //UPROG destructor
 MainWindow::~MainWindow()
@@ -141,6 +145,7 @@ void MainWindow::connectSlots()
     connect(m_pHFComboBox,&HFComboBox::itemPressed,this,&MainWindow::getManufactureInfo);
     connect(m_pHFComboBox_2,&HFComboBox::itemPressed,this,&MainWindow::getDataSheet);
     connect(m_pHFComboBox_3,&HFComboBox::itemPressed,this,&MainWindow::getSchematics);
+    connect(m_pHFLabel,&HFLabel::itemPressed,this,&MainWindow::getSchematicsPixmap);
     connect(m_pHFComboBox,SIGNAL(currentIndexChanged(QString)),this,SLOT(on_hfcomboBox_currentIndexChanged(QString)));
     connect(m_pHFComboBox_2,SIGNAL(currentIndexChanged(QString)),this,SLOT(on_hfcomboBox_2_currentIndexChanged(QString)));
     connect(m_pHFComboBox_3,SIGNAL(currentIndexChanged(QString)),this,SLOT(on_hfcomboBox_3_currentIndexChanged(QString)));
@@ -187,7 +192,7 @@ void MainWindow::setupProgrammer()
 void MainWindow::setupHEXTable()
 {
     QString szItemPath(IMAGE_PATH); //Path to images
-    szItemPath += "/coilwire.jpg";
+    szItemPath += "/coilwire.png"; //(open image every frame, change algorithm in future!!!)
     QImage itemImage(szItemPath); //Image of items in HEX table
     m_pFWTableModel = new FWTableModel(); //Model
     m_pFWTableView = new FWTableView(); //View
@@ -205,6 +210,7 @@ void MainWindow::setupHEXTable()
     ui->tab_2->setLayout(ui->verticalLayout); //Set Layout in a Tab
     m_pFWItemDelegate->setItemImage1(0,0,itemImage); //Set HEX table Item Background Image
     m_pFWItemDelegate->setItemImage2(0,m_pUDevice->getSize(),itemImage); //
+    m_pFWItemDelegate->setItemImage3(m_pUDevice->getSize(),m_pUDevice->getSize(),itemImage);//
     m_pFWTableView->forceUpdateView(); //Update View to Redraw window
 }
 //Update HEX Table Model with Data
@@ -329,9 +335,10 @@ void MainWindow::updateIntfMenu()
     QJsonObject::Iterator iDev;
     QJsonObject::Iterator iDevMenu;
     QJsonObject::Iterator iIntfMenu;
-    ui->label_2->clear();
-    ui->label_2->setText(tr("<Схема отсутсвует>"));
-    ui->label_2->setStyleSheet("QLabel{color:red;font-size:20px;font:bold;}");
+    m_pHFLabel->clear();
+    m_pHFLabel->setText(tr("<Схема отсутсвует>"));
+    m_pHFLabel->setStyleSheet("QLabel{color:red;font-size:20px;font:bold;}");
+    m_pHFLabel->setAlignment(Qt::AlignCenter);
     for(int i = 0;i<m_pJsonObjList->size();i++)
     {
         QJsonObject jsonMan = m_pJsonObjList->at(i);
@@ -364,8 +371,8 @@ void MainWindow::updateIntfMenu()
                                                 m_schemPixmap = QPixmap(m_szSchematicPath);
                                                 if(!m_schemPixmap.isNull())
                                                 {
-                                                    m_schemPixmap = m_schemPixmap.scaled(ui->label_2->size(),Qt::IgnoreAspectRatio);
-                                                    ui->label_2->setPixmap(m_schemPixmap);
+                                                    m_schemPixmap = m_schemPixmap.scaled(ui->tabWidget->size(),Qt::IgnoreAspectRatio);
+                                                    m_pHFLabel->setPixmap(m_schemPixmap);
                                                 }
                                             }
                                         }
@@ -393,13 +400,17 @@ void MainWindow::updateProgressBar(int nProgress)
 {
     QString szItemPathAction(IMAGE_PATH);
     QString szItemPathReady(IMAGE_PATH);
-    szItemPathReady += "/coilwire_ready.jpg";
-    szItemPathAction += "/coilwire_action.jpg";
+    QString szItemPathRemain(IMAGE_PATH);
+    szItemPathReady += "/coilwire_ready.png";
+    szItemPathAction += "/coilwire_action.png";
+    szItemPathRemain += "/coilwire.png";
     QImage itemImageReady(szItemPathReady); //Background Image indicates already downloaded firmware's word in HEX Table
     QImage itemImageAction(szItemPathAction); //Background Image indicates downloading firmware's word in HEX Table
+    QImage itemImageRemain(szItemPathRemain);
     ui->progressBar->setValue(nProgress); //Set Progress Bar current progress value
     m_pFWItemDelegate->setItemImage1(0,nProgress,itemImageReady); //Set Items images with Delegate
     m_pFWItemDelegate->setItemImage2(nProgress+1,nProgress+1,itemImageAction);//
+    m_pFWItemDelegate->setItemImage3(nProgress+2,m_pUDevice->getSize(),itemImageRemain);//
     m_pFWTableModel->setFirmwareData(m_pUDevice->getFirmware());//
     m_pFWTableView->forceUpdateView();//Update Viewport while downloading process
 }
@@ -521,6 +532,7 @@ void MainWindow::keyPressEvent(QKeyEvent *vk)
             m_pHFComboBox->enableSubMenu(false);
             m_pHFComboBox_2->enableSubMenu(false);
             m_pHFComboBox_3->enableSubMenu(false);
+            m_pHFLabel->enableSubMenu(false);
         }
         else
         {
@@ -528,6 +540,7 @@ void MainWindow::keyPressEvent(QKeyEvent *vk)
             m_pHFComboBox->enableSubMenu(true);
             m_pHFComboBox_2->enableSubMenu(true);
             m_pHFComboBox_3->enableSubMenu(true);
+            m_pHFLabel->enableSubMenu(true);
         }
     }
     if(vk->key() == Qt::Key_Escape)
@@ -594,7 +607,7 @@ void MainWindow::writeDevice()
     else
     {
         object retlist = m_fwloadModule.attr("fwLoad")(m_szFirmFile.toStdString());//Run python module function with file name
-        m_fwDataWrite = TypeFromPython<QVector<unsigned long>>::convert(retlist.ptr()); //Convert list from python to QVector
+        m_fwDataWrite = TypeFromPython< QVector<unsigned long> >::convert(retlist.ptr()); //Convert list from python to QVector
     }
     m_pUDevice->setFirmware(&m_fwDataWrite); //Set firmware pointer to Universal Programmer
     if(m_fwDataWrite.size() > m_pUDevice->getSize()) //If size of Device less than Frimware Size then error
@@ -656,12 +669,13 @@ void MainWindow::writeDevice()
             if(MessageBoxWarningYesNo(DEVICE_NOT_FOUND_TITLE,QString(DEVICE_NOT_FOUND_TEXT_B + szDevInfo + DEVICE_NOT_FOUND_TEXT_E)) == QMessageBox::Yes)
             {
                 QString szItemPath(IMAGE_PATH);//
-                szItemPath += "/coilwire.jpg";//
+                szItemPath += "/coilwire.png";//
                 QImage itemImage(szItemPath);//set items background images in HEX table
                 ui->progressBar->setRange(0,m_pUDevice->getSize()-1);//setup progress bar
                 ui->progressBar->setVisible(true);//
                 m_pFWItemDelegate->setItemImage1(0,0,itemImage);//
                 m_pFWItemDelegate->setItemImage2(0,m_pUDevice->getSize(),itemImage);//
+                m_pFWItemDelegate->setItemImage3(m_pUDevice->getSize(),m_pUDevice->getSize(),itemImage);//
                 enableMenu(false);//disable main menu for user
                 m_pUDevice->writeConfiguration(m_pMenuDevice);//write device's configuration memory
                 m_pUDevice->writeFull();//write full device
@@ -675,12 +689,13 @@ void MainWindow::writeDevice()
         else
         {
             QString szItemPath(IMAGE_PATH);//
-            szItemPath += "/coilwire.jpg";//
+            szItemPath += "/coilwire.png";//
             QImage itemImage(szItemPath);//set items background images in HEX talbe
             ui->progressBar->setRange(0,m_pUDevice->getPageSize()-1);//setup progress bar
             ui->progressBar->setVisible(true);//
             m_pFWItemDelegate->setItemImage1(0,0,itemImage);//
             m_pFWItemDelegate->setItemImage2(0,m_pUDevice->getSize(),itemImage);//
+            m_pFWItemDelegate->setItemImage3(m_pUDevice->getSize(),m_pUDevice->getSize(),itemImage);//
             enableMenu(false);//disable main menu for user
             m_progThread.start();//go to thread function in programmer's class
         }
@@ -734,12 +749,13 @@ void MainWindow::readDevice()
             if(MessageBoxWarningYesNo(DEVICE_NOT_FOUND_TITLE,QString(DEVICE_NOT_FOUND_TEXT_B + szDevInfo + DEVICE_NOT_FOUND_TEXT_E)) == QMessageBox::Yes)
             {
                 QString szItemPath(IMAGE_PATH);
-                szItemPath += "/coilwire.jpg";
+                szItemPath += "/coilwire.png";
                 QImage itemImage(szItemPath);//set background image to item in HEX table
                 ui->progressBar->setRange(0,m_pUDevice->getSize()-1);//setup progress bar
                 ui->progressBar->setVisible(true);
                 m_pFWItemDelegate->setItemImage1(0,0,itemImage);//
                 m_pFWItemDelegate->setItemImage2(0,m_pUDevice->getSize(),itemImage);//
+                m_pFWItemDelegate->setItemImage3(m_pUDevice->getSize(),m_pUDevice->getSize(),itemImage);//
                 enableMenu(false);//disable user's main menu
                 m_pUDevice->readFull();//read full firmware from device full memory
                 m_progThread.start(); //run programmer's thread
@@ -752,12 +768,13 @@ void MainWindow::readDevice()
         else
         {
             QString szItemPath(IMAGE_PATH);
-            szItemPath += "/coilwire.jpg";
+            szItemPath += "/coilwire.png";
             QImage itemImage(szItemPath);//set background image to item in HEX table
             ui->progressBar->setRange(0,m_pUDevice->getSize()-1);//setup progress bar
             ui->progressBar->setVisible(true);
             m_pFWItemDelegate->setItemImage1(0,0,itemImage);
             m_pFWItemDelegate->setItemImage2(0,m_pUDevice->getSize(),itemImage);
+            m_pFWItemDelegate->setItemImage3(m_pUDevice->getSize(),m_pUDevice->getSize(),itemImage);//
             enableMenu(false);//disable user's main menu
             m_pUDevice->readFull();//read full firmware from device full memory
             m_progThread.start(); //run programmer's thread
@@ -841,6 +858,17 @@ void MainWindow::getSchematics()
     m_pHFComboBox_2->enableSubMenu(false);
     m_pHFComboBox_3->enableSubMenu(false);
     ui->tabWidget->setCurrentWidget(ui->tab_3);
+}
+//Open schematics pixmap in system's picture viewer
+void MainWindow::getSchematicsPixmap()
+{
+    setCursor(QCursor(Qt::ArrowCursor));//disable HREF when access item in submenu
+    m_pHFLabel->enableSubMenu(false);
+    if(!m_szSchematicPath.isEmpty() && !m_schemPixmap.isNull())
+    {
+        QUrl fileUrl(m_szSchematicPath,QUrl::TolerantMode);
+        QDesktopServices::openUrl(fileUrl);
+    }
 }
 //Disable submenu's HREFs when changing tab when user in submenu
 void MainWindow::on_tabWidget_currentChanged(int index)

@@ -1,6 +1,6 @@
 import sys
 
-fwformat = str("Bytestream/Intel HEX (*.hex);;MCS-86 (*.mcs)")
+fwFormat = str("Bytestream/Intel HEX (*.hex);;MCS-86 (*.mcs)")
 
 class HEXFileError(object):
     BEGRECERR = -1
@@ -14,52 +14,52 @@ class HEXRecordType(object):
     ADDREX = 4
 
 #from list of chars to list of bytes in string format
-def symblistpair(symblist):
-    return [symblist[i] + symblist[i+1] for i in xrange(0,len(symblist),2) if i < len(symblist)-1]
+def symbListPair(symbList):
+    return [symbList[i] + symbList[i+1] for i in xrange(0,len(symbList),2) if i < len(symbList)-1]
 
-def fwload(fwfilename):
+def fwLoad(fwFileName):
     offset = 0
-    hexlist = []
-    print fwfilename
+    hexList = []
+    print fwFileName
     #print fwfilename.decode('utf-8')
-    fwfile = open(fwfilename.decode('utf-8'))
-    if(fwfilename[-4:] == ".hex" or fwfilename[-4:] == ".mcs"):
-        emptyfile = fwfile.read(1)
+    fwFile = open(fwFileName.decode('utf-8'))
+    if(fwFileName[-4:] == ".hex" or fwFileName[-4:] == ".mcs"):
+        emptyfile = fwFile.read(1)
         if(emptyfile != '' and emptyfile != None):
-            fwfile.seek(0)
-            if(fwfile.read(1) == ':'):
-                fwfile.seek(0)
-                for fwrecnum,fwrec in enumerate(fwfile):
-                    if(fwrec[0] != ':'):
-                        fwfile.close()
-                        return [ HEXFileError.BEGRECERR, fwrecnum ]  
-                    fwrecstr = list(fwrec)
-                    fwrecstr.pop(0)
-                    fwrecstr = symblistpair(fwrecstr)
-                    fwrecint = [int(irec,16) for irec in fwrecstr]
-                    fwchecksum = fwrecint.pop()
-                    checksum = 1 + ~(sum(fwrecint) & 0xFF) & 0xFF
-                    if(checksum == fwchecksum): 
-                        if(fwrecint[3] == HEXRecordType.DATA):
-                            for i in range(1,fwrecint[0]+1):
-                                hexlist.append(fwrecint[3+i])
-                        elif(fwrecint[3] == HEXRecordType.EOF):
-                            fwfile.close()
-                            return hexlist
-                        elif(fwrecint[3] == HEXRecordType.ADDRSEG):
-                            offset = int(fwrecstr[4] + fwrecstr[5],16)
-                        elif(fwrecint[3] == HEXRecordType.ADDREX):
-                            offset = int(fwrecstr[5] + '0000',16)
+            fwFile.seek(0)
+            if(fwFile.read(1) == ':'):
+                fwFile.seek(0)
+                for fwRecNum,fwRec in enumerate(fwFile):
+                    if(fwRec[0] != ':'):
+                        fwFile.close()
+                        return [ HEXFileError.BEGRECERR, fwRecNum ]  
+                    fwRecStr = list(fwRec)
+                    fwRecStr.pop(0)
+                    fwRecStr = symbListPair(fwRecStr)
+                    fwRecInt = [int(iRec,16) for iRec in fwRecStr]
+                    fwCheckSum = fwRecInt.pop()
+                    checkSum = 1 + ~(sum(fwRecInt) & 0xFF) & 0xFF
+                    if(checkSum == fwCheckSum): 
+                        if(fwRecInt[3] == HEXRecordType.DATA):
+                            for i in range(1,fwRecInt[0]+1):
+                                hexList.append(fwRecInt[3+i])
+                        elif(fwRecInt[3] == HEXRecordType.EOF):
+                            fwFile.close()
+                            return hexList
+                        elif(fwRecInt[3] == HEXRecordType.ADDRSEG):
+                            offset = int(fwRecStr[4] + fwRecStr[5],16)
+                        elif(fwRecInt[3] == HEXRecordType.ADDREX):
+                            offset = int(fwRecStr[5] + '0000',16)
                         else:
-                            fwfile.close()
-                            return [ HEXFileError.RECTYPEERR, fwrecnum ]
+                            fwFile.close()
+                            return [ HEXFileError.RECTYPEERR, fwRecNum ]
                     else:
-                        fwfile.close()
-                        return [ HEXFileError.CSUMERR, fwrecnum ]                     
+                        fwFile.close()
+                        return [ HEXFileError.CSUMERR, fwRecNum ]                     
             else:               #this is ByteStream HEX Format
-                fwfile.seek(0)
-                for fwrecnum,fwrec in enumerate(fwfile):
-                    hexlist = symblistpair(fwrec)
-                    hexlist = [int(i,16) for i in hexlist]
-    fwfile.close()
-    return hexlist
+                fwFile.seek(0)
+                for fwRecNum,fwRec in enumerate(fwFile):
+                    hexList = symbListPair(fwRec)
+                    hexList = [int(i,16) for i in hexList]
+    fwFile.close()
+    return hexList
