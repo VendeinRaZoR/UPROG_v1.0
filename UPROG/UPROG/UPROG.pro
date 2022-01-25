@@ -17,6 +17,8 @@ load(moc)
 
 QMAKE_MOC_SRC += -DBOOST_PYTHON_HPP_INCLUDED_
 
+win32:RC_ICONS += uprog.ico
+unix:RC_ICONS += uprog.ico
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -132,3 +134,6 @@ win32:CONFIG(release, debug|release){
     QMAKE_COMPILER_DEFINES = _WIN32
 
 }
+
+RESOURCES += \
+    UPROGres.qrc

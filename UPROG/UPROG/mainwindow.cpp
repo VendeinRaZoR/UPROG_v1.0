@@ -866,6 +866,8 @@ void MainWindow::getSchematicsPixmap()
     m_pHFLabel->enableSubMenu(false);
     if(!m_szSchematicPath.isEmpty() && !m_schemPixmap.isNull())
     {
+        //m_szSchematicPath = QString("file:///") + m_szSchematicPath;
+        //qDebug() << "file URL : " << m_szSchematicPath;
         QUrl fileUrl(m_szSchematicPath,QUrl::TolerantMode);
         QDesktopServices::openUrl(fileUrl);
     }

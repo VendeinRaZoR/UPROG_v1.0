@@ -40,6 +40,10 @@
   <property name="windowTitle">
    <string>Универсальный программатор UProg 1.0</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>uprog.ico</normaloff>uprog.ico</iconset>
+  </property>
   <property name="autoFillBackground">
    <bool>false</bool>
   </property>
