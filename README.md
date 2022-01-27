@@ -22,11 +22,11 @@
 
 Версия для Linux пока не совсем доработанная и графический интерфейс неправильно форматирован, как на рисунках ниже, из-за отличий в шрифтах и прочем;
 
-![image alt ><](/README.image/1.bmp)
+![](/README.image/1.bmp)
 
 Версия для Linux
 
-![image alt ><](/README.image/2.bmp)
+![](/README.image/2.bmp)
 
 Версия для Windows
 
