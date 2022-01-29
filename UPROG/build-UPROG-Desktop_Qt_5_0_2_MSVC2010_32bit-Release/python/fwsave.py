@@ -5,13 +5,13 @@ fwFormat = str("Intel HEX (*.hex)")
 numOfBytes = 16
 numOfBytesOffset = 2
 
-def fwsave(fwFileName,hexList):
+def fwSave(fwFileName,hexList):
     fwFile = open(fwFileName,'w')
     address = 0
     paragraph = 0
     checkSum = 1 + ~((numOfBytesOffset + 4) & 0xFF) & 0xFF
     offset = ':' + '{:02x}'.format(numOfBytesOffset).upper() + '{:04x}'.format(0).upper() + '{:02x}'.format(4).upper() + '{:04x}'.format(0).upper() + '{:02x}'.format(checkSum).upper() + '\n'
-    fwfile.write(offset)
+    fwFile.write(offset)
     for i,x in enumerate(hexList):
         if hexList[i] < 0:
             hexList[i] += 256
