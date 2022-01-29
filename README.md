@@ -194,4 +194,4 @@
 
 **UPDATE:** Видео с примером работы программатора AT17:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/sko9AHyVqKE&t=33s/0.jpg)](https://www.youtube.com/watch?v=sko9AHyVqKE&t=33s)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/sko9AHyVqKE&t=33s/maxresdefault.jpg)](https://www.youtube.com/watch?v=sko9AHyVqKE&t=33s)
