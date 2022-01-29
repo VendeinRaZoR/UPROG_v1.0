@@ -47,7 +47,7 @@
 **Минимальные системные требования для программатора**  **UPROG**  **версии 1.0:**
 
 - Операционная система: Windows (начиная с XP), Linux с графической оболочкой MATE, Cinnamon и прочие;
-- Дополнительно ПО: **Python версии только 2.7 x86** https://www.python.org/downloads/release/python-2717/; **Qt (Qt Creator) версии только 5.0.2** https://download.qt.io/archive/qt/5.0/5.0.2/;
+- Дополнительно ПО: **Python версии только 2.7 x86** https://www.python.org/downloads/release/python-2717/; **Qt (Qt Creator) версии только 5.0.2 x86** https://download.qt.io/archive/qt/5.0/5.0.2/;
 - Процессор: x86 233 МГц Pentium II
 - Память ОЗУ: 128 Мбайт
 - Память ПЗУ: 50 Мбайт свободного места на диске
