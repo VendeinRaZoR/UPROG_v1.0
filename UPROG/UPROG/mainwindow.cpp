@@ -25,7 +25,7 @@
 #define DEVICE_NOT_FOUND_TITLE tr("Устройство не найдено")
 #define DEVICE_NOT_FOUND_TEXT tr("Устройство не отвечает\nПроверьте соединения и контакты")
 #define DEVICE_NOT_FOUND_TEXT_B tr("Устройство с кодом производителя\n")
-#define DEVICE_NOT_FOUND_TEXT_E tr("\nне найдено\nВсё равно начать запись?")
+#define DEVICE_NOT_FOUND_TEXT_E tr("\nне найдено\nВсё равно начать чтение/запись ?")
 #define LENGTH_GREATER_TITLE tr("Файл прошивки велик")
 #define LENGTH_GREATER_TEXT tr("Размер файла прошивки больше,\nчем максимально доступный обьем памяти\nмикросхемы")
 #define WRITE_ERROR_TITLE tr("Ошибка при прожиге")
