@@ -192,6 +192,6 @@
 
 **UPDATE:** в папке Device/Pattern расположен шаблон для библиотеки пользовательского устройства 
 
-**UPDATE:** Видео с работой программатора AT17:
+**UPDATE:** Видео с примером работы программатора AT17:
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/sko9AHyVqKE&t=33s/0.jpg)](https://www.youtube.com/watch?v=sko9AHyVqKE&t=33s)
