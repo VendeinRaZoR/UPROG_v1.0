@@ -190,11 +190,8 @@
 
 Адрес LPT порта в Linux можно получить с помощью команды _lspci_, если LPT порт присутствует в виде карты расширения на шине PCI или PCI-Express, либо с помощью команды _lshw_, если LPT порт уже стоит на плате.
 
-<<<<<<< HEAD
-**UPDATE:** � ����� Device/PatternMan/PatternDev ���������� ������ ��� ���������� ����������������� ���������� 
-=======
-Видео с работой [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
-
-
 **UPDATE:** в папке Device/Pattern расположен шаблон для библиотеки пользовательского устройства 
->>>>>>> 59a5301493b148c18f4612f1da862d05f64a6655
+
+**UPDATE:** Видео с работой программатора AT17:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=YOUTUBE_VIDEO_ID_HERE)
